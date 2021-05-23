@@ -1,0 +1,35 @@
+# Async Model (Node.js is completely designed to use the async model)
+
+# Concurrency: The ability to perform multiple tasks at the same time
+
+# Different Execution models:
+
+# --------- Single Threaded Synchronous ---------
+# By default python is singled threaded synchronous (this is the simplest execution flow)
+# Each task is performed one at a time, the next one only begins after the current one has completed
+# If all tasks are performed in a specific order, a later task can assume the output from the previous task is available
+# Flask is single threaded synchronous by default, each incoming request is served one at a time.
+# If the web server has high traffic, single threaded sync is not ideal
+
+
+# ---------  Multi-threaded synchronous ---------
+# All our tasks can be performed at the same time but in different threads of execution (concurrency)
+# The threads are managed by the OS, they may run concurrently on different processors,
+# but they could also be running currently on a single processor.
+# Threads need to coordinate and communicate with each other (difficult to implement)
+
+
+# --------- Single-threaded asynchronous (async model) ---------
+# Allows us to perform multiple tasks at the same time.
+# However, unlike the multi-threaded model, the programmer knows only one task will be executing at any given time.
+# One major difference between this and multi-threaded, is the programmer decides when one task should stop and
+# give control to a different task.
+# The difference between this and single threaded synchronous is the "waiting", if their is "waiting" involved,
+# the async model will significantly out perform the synchronous model.
+
+# "Waiting" is when the program is waiting to perform I/O (transfer data) (e.g. network call (API), file system calls)
+# For a web server, most of the time will be spent waiting for data to be transferred.
+# A synchronous app would block and wait for the I/O to complete, where async would start working on other tasks.
+
+# Use async for these scenarios:
+# Their are a lot of tasks. The tasks perform a lot of I/O. The tasks are independent (e.g. web server)
