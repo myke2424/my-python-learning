@@ -33,7 +33,7 @@ print(f'Finished in {round(finish - start, 2)} second(s) ')
 
 # Loop example
 # We can't thread.join() in the loop because it would join the thread each iteration resulting in synchronous code
-
+start_loop = time.perf_counter()
 threads = []
 
 for _ in range(10):
@@ -44,7 +44,6 @@ for _ in range(10):
 for t in threads:
     t.join()
 
-start_loop = time.perf_counter()
 finish_loop = time.perf_counter()
 print(f'Finished in {round(finish_loop - start_loop, 2)} second(s) ')
 
